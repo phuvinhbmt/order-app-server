@@ -1,18 +1,31 @@
-Prerequisite
-Node (>=14)
-npm
-Refer to Installation
+# Prerequisite
+ - NodeJs
+ - npm
 
-How to run
-npm install
-npm start 
+To check your machine has Nodejs and npm, refer to Installation
+# How to run 
+Inside api-backend folder, run: 
 
-a successful running process is: Backend is listening on port localhost:3000
+    $ npm install
+    $ npm start
 
-Installation
-node -v
-npm -v
+Terminal should output: 
 
-Modules used
-express
-axios
+    nodemon index.js
+    [nodemon] 2.0.16
+    [nodemon] to restart at any time, enter rs
+    [nodemon] watching path(s): *.*
+    [nodemon] watching extensions: js,mjs,json
+    [nodemon] starting node index.js
+    Backend is listening on port localhost:3000
+This project will then run on localhost:3000
+ 
+# Installation
+   Check if node or npm is installed in your machine by: 
+
+    $ node -v  
+    v14.15.15  #sample output
+
+    $ npm -v
+    8.10.0 #sample output
+If your machine does not have node or npm, refer to this doc to install https://github.com/nvm-sh/nvm
