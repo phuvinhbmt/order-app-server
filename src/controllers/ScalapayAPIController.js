@@ -35,7 +35,7 @@ class ScalapayAPIController {
             'Content-Type': 'application/json', // required by Scalapay
             'Authorization': this.BEARER_TOKEN, // required by Scalapay
             'Connection': 'Keep-Alive'
-        }
+        };
     }
 
     /**
@@ -51,7 +51,7 @@ class ScalapayAPIController {
         return {
             status: statusCode,
             messages: errorMsg
-        }
+        };
     }
 }
 
