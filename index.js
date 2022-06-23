@@ -1,5 +1,7 @@
-const scalapayAPI = require('./src/controllers/ScalapayAPIController');
-const express = require('express');
+require('dotenv').config();
+const scalapayAPI = require('./src/controllers/ScalapayAPIController')
+const express = require('express')
+const scalapayAPIRouter = require('./src/routers/scalapayOrder')
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -9,11 +11,9 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
-app.use(express.json());
 
-// set router
-app.get('', (req, res) => {res.json({status: 200})});
-app.post('/orders', (req, res) => scalapayAPI.handleOrderCreation(req, res));
+app.use(express.json());
+app.use(scalapayAPIRouter);
 
 app.listen(PORT, () => {
     console.log(`Backend is listening on port localhost:${PORT}`);
