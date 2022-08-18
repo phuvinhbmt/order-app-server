@@ -29,3 +29,18 @@ This project will then run on localhost:3000
     $ npm -v
     8.10.0 #sample output
 If your machine does not have node or npm, refer to this doc to install https://github.com/nvm-sh/nvm
+
+# Containerize-example
+1. Start the app `docker-compose -f docker-compose.dev.yml up --build`
+2. Test the app
+- Create an object
+```
+  curl --request POST \
+  --url http://localhost:8000/notes \
+  --header 'content-type: application/json' \
+  --data '{"name": "this is a note", "text": "this is a note that I wanted to take while I was working on writing a blog post.", "owner": "peter"}'
+```
+- View the created object
+```
+curl --request GET --url http://localhost:8000/notes
+```
