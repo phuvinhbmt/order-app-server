@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: test docker username
-        run: echo ${{secrets.DOCKER_HUB_USERNAME}}
+        run: echo ${{ secrets.DOCKER_HUB_USERNAME }}
 
       # Runs a single command using the runners shell
       - name: Login to Docker Hub
@@ -43,7 +43,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/api-backendlatest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/api-backend:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
