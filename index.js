@@ -3,6 +3,7 @@ const scalapayAPI = require('./src/controllers/ScalapayAPIController')
 const express = require('express')
 const scalapayAPIRouter = require('./src/routers/scalapayOrder')
 const PORT = process.env.PORT || 3000;
+let doctrine = require('doctrine');
 
 const app = express();
 app.use((req, res, next) => {
@@ -15,6 +16,18 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(scalapayAPIRouter);
 
+let doc = `
+    /**
+     * Send POST request to Scalapay API to create an order. Handle response and send to the frontend
+     * @param {Request<>} req
+     * @param {Response<>} res
+     * @return {Promise<*>}
+     */
+`;
+let ast = doctrine.parse(doc, {unwrap: true, recoverable: false});
+var util = require('util');
+
 app.listen(PORT, () => {
     console.log(`Backend is listening on port localhost:${PORT}`);
+    console.log(util.inspect(ast.tags.map(t => ([t.title, t.name])), {depth: 5, colors: true}));
 });
