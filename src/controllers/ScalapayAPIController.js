@@ -1,11 +1,12 @@
 const axios = require('axios');
+require('dotenv').config();
 
 /**
  * Class representing a controller to call to Scalapay API
  */
 class ScalapayAPIController {
-    HOST_NAME = 'https://integration.api.scalapay.com';
-    BEARER_TOKEN = 'Bearer qhtfs87hjnc12kkos';
+    HOST_NAME = process.env.SCALAPAY_DOMAIN;
+    BEARER_TOKEN = process.env.SCALAPAY_BEARER_TOKEN;
 
     /**
      * Send POST request to Scalapay API to create an order. Handle response and send to the frontend
