@@ -1,7 +1,6 @@
 require('dotenv').config();
-const scalapayAPI = require('./src/controllers/ScalapayAPIController')
-const express = require('express')
-const scalapayAPIRouter = require('./src/routers/scalapayOrder')
+const express = require('express');
+const scalapayAPIRouter = require('./src/routers/scalapayOrder');
 const PORT = process.env.PORT || 3000;
 
 const app = express();
