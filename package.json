@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon index.js",
     "debug": "nodemon --inspect=0.0.0.0:9229 index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --detectOpenHandles --watch",
+    "lint": "eslint *.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,11 @@
   },
   "description": "",
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "eslint": "^8.23.1",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^29.0.3",
+    "nock": "^13.2.9",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.3.3"
   }
 }
