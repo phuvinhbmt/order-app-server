@@ -4,7 +4,7 @@
 
 To check your machine has Nodejs and npm, refer to Installation
 # How to run 
-Create `.env` file in api-backend folder. Use [Scalapay API Auth](https://developers.scalapay.com/reference/api-authentication) to fill in `.env`
+Create `.env` file in api-backend folder. Use [Scalapay API Auth](https://developers.scalapay.com/reference/api-authentication) to fill in `.env` (sample file .env.example)
 ```
 SCALAPAY_DOMAIN=<fill_in>
 SCALAPAY_BEARER_TOKEN=<fill_in>

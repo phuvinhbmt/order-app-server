@@ -14,6 +14,8 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(scalapayAPIRouter);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Backend is listening on port localhost:${PORT}`);
 });
+
+module.exports = server;
