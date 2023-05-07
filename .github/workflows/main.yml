@@ -6,7 +6,6 @@ name: CI to Docker Hub
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -26,21 +25,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
+      - name: User Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v3
         with:
-          username: ${{secrets.DOCKER_HUB_USERNAME}}
-          password: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
-
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v1
-        with:
-          context: ./
-          file: ./Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/api-backendlatest
-
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+          node-version: ${{matrix.node-version}}
+      - run: npm ci
+      - run: npm run test
