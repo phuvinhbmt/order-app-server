@@ -1,4 +1,3 @@
-require('dotenv').config()
 const server = require('../../index')
 const nock = require('nock')
 const request = require('supertest')
@@ -102,7 +101,7 @@ describe('Call POST Scalapay API', () => {
   const expectedResponseProperties = ['token', 'expires', 'checkoutUrl']
 
   beforeAll(() => {
-    nock(process.env.SCALAPAY_DOMAIN).post('/v2/orders').reply(200, expectedResponse)
+    nock(process.env.SCALAPAY_DOMAIN).post('/v2/orders').reply(200, expectedResponse);
   })
 
   afterAll(async () => {
