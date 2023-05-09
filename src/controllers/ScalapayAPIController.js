@@ -9,6 +9,7 @@ class ScalapayAPIController {
     BEARER_TOKEN = process.env.SCALAPAY_BEARER_TOKEN;
 
     /**
+     * POST /orders
      * Send POST request to Scalapay API to create an order. Handle response and send to the frontend
      * @param {Object=} req
      * @param {Object=} res
@@ -48,7 +49,7 @@ class ScalapayAPIController {
      * @return {{status: number, messages: string[]}}
      */
     parseScalapayErrorIntoMessageResponse(scalapayRespError) {
-        const statusCode = scalapayRespError.status;
+        const statusCode = scalapayRespError?.status || 400;
         const errorMsg = scalapayRespError.errors.map(error => error.messages.reduce(
             (msgList, msg) => msgList.concat(msg),
         ));
