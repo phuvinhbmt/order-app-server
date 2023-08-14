@@ -7,7 +7,7 @@ module.exports = {
   'extends': 'google',
   'overrides': [],
   'parserOptions': {
-  'ecmaVersion': 'latest',
+    'ecmaVersion': 'latest',
   },
   'rules': {
     'indent': ['error', 2],
