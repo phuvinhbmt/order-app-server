@@ -7,8 +7,8 @@
     "start:dev": "nodemon index.js",
     "test": "jest --detectOpenHandles",
     "test:watch": "jest --detectOpenHandles --watch",
-    "lint:check": "eslint *.js",
-    "lint:format": "eslint *.js --fix"
+    "lint:check": "eslint .",
+    "lint:format": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
