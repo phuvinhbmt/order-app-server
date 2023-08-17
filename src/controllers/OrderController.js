@@ -4,7 +4,7 @@ require('dotenv').config();
 /**
  * Class representing a controller to call to Scalapay API
  */
-class ScalapayAPIController {
+class OrderController {
   HOST_NAME = process.env.SCALAPAY_DOMAIN;
   BEARER_TOKEN = process.env.SCALAPAY_BEARER_TOKEN;
 
@@ -60,4 +60,4 @@ class ScalapayAPIController {
   }
 }
 
-module.exports = new ScalapayAPIController;
+module.exports = new OrderController;
