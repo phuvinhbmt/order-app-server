@@ -1,4 +1,4 @@
-const {createScalapayOrder: postScalapayOrder} = require('../services/order.service');
+const {postScalapayOrder} = require('../services/order.service');
 
 const createOrder = async (req, res) => {
   const response = await postScalapayOrder(req);

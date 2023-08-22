@@ -8,6 +8,6 @@ router.get('', (req, res) => {
   res.json({status: 200});
 });
 router.post('/orders', (req, res) => orderController.handleOrderCreation(req, res));
-router.post('/orders/v2', (req, res) => createOrder(req, res));
+router.route('/v2/orders').post(createOrder);
 
 module.exports = router;
