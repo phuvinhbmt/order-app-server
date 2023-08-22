@@ -13,5 +13,6 @@ module.exports = {
     'indent': ['error', 2],
     'max-len': 0,
     'arrow-parens': 0,
+    'new-cap': 0,
   },
 };

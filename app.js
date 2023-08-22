@@ -1,7 +1,5 @@
-require('dotenv').config();
 const express = require('express');
-const scalapayAPIRouter = require('./src/routers/scalapayOrder');
-const PORT = process.env.PORT || 3000;
+const routes = require('./src/routers/order.route');
 
 const app = express();
 app.use((req, res, next) => {
@@ -12,10 +10,6 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-app.use(scalapayAPIRouter);
+app.use(routes);
 
-const server = app.listen(PORT, () => {
-  console.log(`Backend is listening on port localhost:${PORT}`);
-});
-
-module.exports = server;
+module.exports = app;
