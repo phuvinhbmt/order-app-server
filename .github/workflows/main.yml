@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI for test and lint
+name: CI for build, test and deploy
 
 # Controls when the workflow will run
 on:
@@ -14,15 +14,17 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  test:
-    # The type of runner that the job will run on
+  build:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Login to docker hub
+        run: docker login --username ${{env.USERNAME}} --p ${{secrets.PASSWORD}}
+      - name: Push image to docker hub
+        run: docker push vinhforvedentta/order-ap-server:latest
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
