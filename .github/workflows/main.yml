@@ -20,7 +20,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v3
       - name: Login to docker hub
-        run: echo ${{env.USERNAME}}
+        run: echo ${{ env.USERNAME }}
 #      - name: Push image to docker hub
 #        run: docker push vinhforvedentta/order-ap-server:latest
 
