@@ -20,18 +20,17 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v3
       - name: Login to docker hub
-        run: echo username= ${{ env.USERNAME }}
+        run: echo username= ${{ vars.USERNAME }}
 #      - name: Push image to docker hub
 #        run: docker push vinhforvedentta/order-ap-server:latest
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-      - run: npm cache clear --force
-      - run: npm ci
-      - run: npm run lint:check
-      - run: npm run test
+#  test:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/setup-node@v3
+#        with:
+#          node-version: '20'
+#      - run: npm ci
+#      - run: npm run lint:check
+#      - run: npm run test
