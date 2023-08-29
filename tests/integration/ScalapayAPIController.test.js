@@ -1,4 +1,4 @@
-const server = require('../../index');
+const app = require('../../app');
 const nock = require('nock');
 const request = require('supertest');
 
@@ -96,7 +96,7 @@ const mock200RequestBody = {
   },
 };
 
-describe('Call POST Scalapay API', () => {
+describe('POST /orders', () => {
   const expectedResponse = {token: '', expires: '', checkoutUrl: ''};
   const expectedResponseProperties = ['token', 'expires', 'checkoutUrl'];
 
@@ -104,13 +104,24 @@ describe('Call POST Scalapay API', () => {
     nock(process.env.SCALAPAY_DOMAIN).post('/v2/orders').reply(200, expectedResponse);
   });
 
-  afterAll(async () => {
-    await server.close();
+  describe('Given correct body', () => {
+    test(`should return 200 and response properties ${expectedResponseProperties}`, async () => {
+      return request(app).post('/orders').send(mock200RequestBody).expect(200, expectedResponse);
+    });
+  });
+});
+
+describe('POST /orders/v2', () => {
+  const expectedResponse = {token: '', expires: '', checkoutUrl: ''};
+  const expectedResponseProperties = ['token', 'expires', 'checkoutUrl'];
+
+  beforeAll(() => {
+    nock(process.env.SCALAPAY_DOMAIN).post('/v2/orders').reply(200, expectedResponse);
   });
 
   describe('Given correct body', () => {
     test(`should return 200 and response properties ${expectedResponseProperties}`, async () => {
-      return request(server).post('/orders').send(mock200RequestBody).expect(200, expectedResponse);
+      return request(app).post('/v2/orders').send(mock200RequestBody).expect(201, expectedResponse);
     });
   });
 });
