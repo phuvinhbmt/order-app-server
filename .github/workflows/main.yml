@@ -22,7 +22,7 @@ jobs:
       - name: Login to docker hub
         run: docker login --username ${{ vars.USERNAME }} --password ${{ secrets.PASSWORD }}
       - name: Push image to docker hub
-        run: docker push vinhforvedentta/order-ap-server:latest
+        run: docker push vinhforvedentta/order-app-server:latest
 
   test:
     needs: build
